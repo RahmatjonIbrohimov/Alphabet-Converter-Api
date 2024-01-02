@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from dotenv import load_dotenv, dotenv_values
 
@@ -12,11 +13,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 INSTALLED_APPS = [
-    'api', # local
-    'rest_framework' # local
+    'api',  # local
+    'rest_framework',  # local
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,7 +55,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 DATABASES = {
     'default': {
@@ -63,7 +62,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -81,19 +79,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# media
+MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
+MEDIA_URL = '/files/'
