@@ -1,9 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from .models import ConvertTextModel
 from .serializers import ConvertTextSerializer, ConvertFileSerializer
-
+from .convert import to_latin, to_ciril
 
 # Create your views here.
 def home(request):
@@ -36,3 +39,9 @@ class HomeViews(ListAPIView):
     queryset = ConvertTextModel.objects.order_by('-date')[:1]
     serializer_class = ConvertTextSerializer
 
+
+class toLatinView(APIView):
+    def get(self, request, *args, **kwargs):
+        last_text = ConvertTextModel.objects.last().text
+        convert = to_latin(last_text)
+        return Response({'convert': convert})
