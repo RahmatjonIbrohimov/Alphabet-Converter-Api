@@ -11,7 +11,7 @@ def home(request):
 
 
 # class ReadFileViews(APIView):
-#     
+#
 
 
 class AddTextView(CreateAPIView):
