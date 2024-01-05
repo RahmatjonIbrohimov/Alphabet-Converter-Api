@@ -11,7 +11,7 @@ SECRET_KEY = envs.get('DJANGO_SECURITY_KEY')
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*' ,'127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['*', '127.0.0.1', '.vercel.app']
 
 # Application definition
 INSTALLED_APPS = [
@@ -55,7 +55,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.app'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 DATABASES = {
