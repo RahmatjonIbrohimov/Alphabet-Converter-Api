@@ -8,6 +8,7 @@ django = "*"
 python-dotenv = "*"
 djangorestframework = "*"
 python-docx = "*"
+drf-spectacular = "*"
 
 [dev-packages]
 
