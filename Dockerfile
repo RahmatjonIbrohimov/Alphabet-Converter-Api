@@ -1,1 +1,1 @@
-FROM python:3.11-alpineENV PYTHONBUFFERED=1COPY requirements.txt requirements.txtRUN pip install -r requirements.txtWORKDIR /appCOPY . /appEXPOSE 8000CMD ["python", "manage.py", "runserver"]
+FROM python:3.8-slim-busterENV PYTHONDONTWRITEBYTECODE=1ENV PYTHONUNBUFFERED=1WORKDIR ./appCOPY requirements.txt /app/RUN pip3 install --upgrade pipRUN pip3 install -r requirements.txtCOPY . /appCMD ["python","manage.py","runserver","0.0.0.0:8000"]

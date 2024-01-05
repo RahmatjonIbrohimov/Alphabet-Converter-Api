@@ -44,7 +44,7 @@ class LatinOrCyrillicView(APIView):
             elif to == 'to_Cyrillic':
                 convert = to_ciril(last_text)
                 return Response({'Original Text': last_text, 'Latin to Cyrillic': convert})
-        except ImportError:  # KeyError
+        except KeyError:  # KeyError
             return Response({'result': "Siz konvert qilishda adashdingiz!"})
 
 
