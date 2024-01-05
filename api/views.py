@@ -33,3 +33,18 @@ class AddFileView(CreateAPIView):
         return redirect('open-file')
 
 
+class LatinOrCyrillicView(APIView):
+    def get(self, request, *args, **kwargs):
+        last_text = ConvertTextModel.objects.last().text
+        to = ConvertTextModel.objects.last().to
+        try:
+            if to == "to_Latin":
+                convert = to_latin(last_text)
+                return Response({'Original Text': last_text, 'Cyrillic to Latin': convert})
+            elif to == 'to_Cyrillic':
+                convert = to_ciril(last_text)
+                return Response({'Original Text': last_text, 'Latin to Cyrillic': convert})
+        except ImportError:  # KeyError
+            return Response({'result': "Siz konvert qilishda adashdingiz!"})
+
+
