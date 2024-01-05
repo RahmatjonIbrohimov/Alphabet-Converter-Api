@@ -1,0 +1,152 @@
+openapi: 3.0.3
+info:
+  title: Alphabet Converter API
+  version: 1.0.0
+  description: the Program Converts Text From the Latin Alphabet to the Cyrillic Alphabet
+paths:
+  /api/:
+    get:
+      operationId: api_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConvertText'
+          description: ''
+  /api/file/add/:
+    post:
+      operationId: api_file_add_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConvertFile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ConvertFile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ConvertFile'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConvertFile'
+          description: ''
+  /api/result/file/:
+    get:
+      operationId: api_result_file_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/result/text/:
+    get:
+      operationId: api_result_text_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/text/add/:
+    post:
+      operationId: api_text_add_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConvertText'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ConvertText'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ConvertText'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConvertText'
+          description: ''
+components:
+  schemas:
+    ConvertFile:
+      type: object
+      properties:
+        file:
+          type: string
+          format: uri
+        to:
+          $ref: '#/components/schemas/ToEnum'
+        date:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - date
+      - to
+    ConvertText:
+      type: object
+      properties:
+        text:
+          type: string
+        to:
+          $ref: '#/components/schemas/ToEnum'
+        date:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - date
+      - text
+      - to
+    ToEnum:
+      enum:
+      - to_Latin
+      - to_Cyrillic
+      type: string
+      description: |-
+        * `to_Latin` - to_Latin
+        * `to_Cyrillic` - to_Cyrillic
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
