@@ -1,13 +1,9 @@
 import os
 from pathlib import Path
-from dotenv import load_dotenv, dotenv_values
-
-load_dotenv()
-envs = dotenv_values()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = envs.get('DJANGO_SECURITY_KEY')
+SECRET_KEY = 'django-insecure-i3qec=nd$uq9z7md$)_s@czho^!r^y8b)_ph0%f0psg=yi4lu%'
 
 DEBUG = False
 
@@ -95,8 +91,8 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "static"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
