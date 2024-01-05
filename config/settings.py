@@ -11,7 +11,7 @@ SECRET_KEY = envs.get('DJANGO_SECURITY_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*' ,'127.0.0.1', '.vercel.app']
 
 # Application definition
 INSTALLED_APPS = [
@@ -54,7 +54,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.app'
 
 # Database
 DATABASES = {
@@ -94,6 +94,7 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = 'static/'
 
 # Default primary key field type
