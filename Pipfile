@@ -9,6 +9,7 @@ python-dotenv = "*"
 djangorestframework = "*"
 python-docx = "*"
 drf-spectacular = "*"
+whitenoise = "*"
 
 [dev-packages]
 
