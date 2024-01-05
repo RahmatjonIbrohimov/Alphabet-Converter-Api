@@ -9,7 +9,6 @@ python-dotenv = "*"
 djangorestframework = "*"
 python-docx = "*"
 drf-spectacular = "*"
-whitenoise = "*"
 psycopg2 = "*"
 psycopg2-binary = "*"
 
