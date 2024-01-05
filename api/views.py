@@ -68,7 +68,7 @@ class OpenFileView(APIView):
                         document.paragraphs[i].clear()
                     document.add_paragraph(convert)
                     document.save(last_text)
-                    return Response({'Original Text': f"http://127.0.0.1:8000/{last_text}", 'Cyrillic to Latin': convert})
+                    return Response({'Original Text': f"https://alphabet.pythonanywhere.com/{last_text}", 'Cyrillic to Latin': convert})
 
                 elif to == 'to_Cyrillic':
                     convert = to_ciril(res)
@@ -79,7 +79,7 @@ class OpenFileView(APIView):
 
                     document.add_paragraph(convert)
                     document.save(last_text)
-                    return Response({'Original Text': f"http://127.0.0.1:8000/{last_text}", 'Latin to Cyrillic': convert})
+                    return Response({'Original Text': f"https://alphabet.pythonanywhere.com/{last_text}", 'Latin to Cyrillic': convert})
 
             except KeyError:  # KeyError
                 return Response({'result': "Siz konvert qilishda adashdingiz! Yoki Alfabetda mavjud bo'lmagan belgi "
@@ -105,7 +105,7 @@ class OpenFileView(APIView):
                             fayl.writelines(convert)
                             print(fayl)
 
-                    return Response({'Original Text':  f"http://127.0.0.1:8000/{last_text}", 'Cyrillic to Latin': convert})
+                    return Response({'Original Text':  f"https://alphabet.pythonanywhere.com/{last_text}", 'Cyrillic to Latin': convert})
 
                 elif to == 'to_Cyrillic':
                     convert = to_ciril(res)
@@ -113,7 +113,7 @@ class OpenFileView(APIView):
                         for convert in fayl:
                             fayl.writelines(convert)
                             print(fayl)
-                    return Response({'Original Text':  f"http://127.0.0.1:8000/{last_text}", 'Latin to Cyrillic': convert})
+                    return Response({'Original Text':  f"https://alphabet.pythonanywhere.com/{last_text}", 'Latin to Cyrillic': convert})
             except KeyError:  # KeyError
                 return Response({'result': "Siz konvert qilishda adashdingiz!"})
 
