@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_spectacular',  # third
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,10 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -93,3 +98,11 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# rest_framework docs
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Alphabet Converter API',
+    'DESCRIPTION': 'the Program Converts Text From the Latin Alphabet to the Cyrillic Alphabet',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
